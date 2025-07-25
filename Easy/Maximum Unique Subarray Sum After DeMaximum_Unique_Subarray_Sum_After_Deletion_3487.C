@@ -1,11 +1,11 @@
 class Solution:
     def maxSum(self, nums: List[int]) -> int:
-        if max(nums)<0 :
+        allneg = True
+        for num in nums:
+            if num>=0:
+                allneg = False
+                break
+        if allneg:
             return max(nums)
-        else:
-            result=0
-            nums=set(nums)
-            for i in nums:
-                if i>=0:
-                    result+=i
-            return result
+        lst = set(num for num in nums if num>=0)
+        return sum(lst)
